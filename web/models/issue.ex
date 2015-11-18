@@ -12,7 +12,7 @@ defmodule IssueReporter.Issue do
   end
 
   @required_fields ~w(type latitude longitude fixed)
-  @optional_fields ~w()
+  @optional_fields ~w(message)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
