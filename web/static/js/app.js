@@ -66,6 +66,11 @@ map.setContextMenu({
   ]
 })
 
+const ICONS = {
+  'broken semaphore': '/images/semaphore.png',
+  'broken lamp post': '/images/lamp.png'
+}
+
 function addMarker(issue) {
   map.addMarker({
     lat: issue.latitude,
@@ -73,7 +78,7 @@ function addMarker(issue) {
     infoWindow: {
       content: `<p>${issue.message}</p>`
     },
-    icon: '/images/lamp.png'
+    icon: ICONS[issue.type]
   })
 }
 

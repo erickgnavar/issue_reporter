@@ -18,7 +18,9 @@
           <div class="form-group">
             <label for="type" class="control-label">Type:</label>
             <select id="type" name="type" class="form-control">
-              <option value="broken lamp post">Broken lamp post</option>
+            <%= for type <- @issue_types do %>
+              <option value="<%= type.key %>"><%= type.value %></option>
+            <% end %>
             </select>
           </div>
           <div class="form-group">
