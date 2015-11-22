@@ -11,6 +11,8 @@ defmodule IssueReporter.IssueChannel do
     changeset = Issue.changeset(%Issue{}, issue)
     case Repo.insert(changeset) do
       {:ok, _issue} ->
+        # TODO: make render with View function
+        issue = Map.put(issue, "id", _issue.id)
         Logger.info "inserted"
         broadcast! socket, "new_issue", %{issue: issue}
       {:error, changeset} ->
