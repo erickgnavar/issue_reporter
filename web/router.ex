@@ -24,5 +24,9 @@ defmodule IssueReporter.Router do
     pipe_through :api
 
     get "/issues/", IssueController, :index
+    post "/issues/", IssueController, :create
+    get "/issues/:id/", IssueController, :show
+    put "/issues/:id/", IssueController, :update
+    delete "/issues/:id/", IssueController, :delete
   end
 end
