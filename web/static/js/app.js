@@ -41,6 +41,21 @@ $('#btn-enable-geolocation').on('click', function(event) {
   })
 })
 
+$('#btn-load-all-issues').on('click', function(event) {
+  event.preventDefault()
+  loadIssues()
+})
+
+$('#btn-load-fixed').on('click', function(event) {
+  event.preventDefault()
+  loadIssues({fixed: true})
+})
+
+$('#btn-load-unfixed').on('click', function(event) {
+  event.preventDefault()
+  loadIssues({fixed: false})
+})
+
 let map = new GMaps({
   div: '#map',
   lat: -12.043333,
@@ -100,15 +115,21 @@ function addMarker(issue) {
   })
 }
 
-$.ajax({
-  method: 'get',
-  url: '/api/issues/',
-  success: function (issues) {
-    issues.data.map(issue => {
-      addMarker(issue)
-    })
-  }
-})
+function loadIssues(params) {
+  map.removeMarkers()
+  params = params || {}
+  $.ajax({
+    method: 'get',
+    url: `/api/issues/?${$.param(params)}`,
+    success: function (issues) {
+      issues.data.map(issue => {
+        addMarker(issue)
+      })
+    }
+  })
+}
+
+loadIssues()
 
 channel.on('new_issue', payload => {
   addMarker(payload.issue)

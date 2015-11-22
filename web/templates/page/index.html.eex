@@ -1,4 +1,7 @@
 <button class="btn btn-default" id="btn-enable-geolocation" style="margin-bottom: 10px">Set current location</button>
+<button class="btn btn-default" id="btn-load-all-issues" style="margin-bottom: 10px">Load all</button>
+<button class="btn btn-default" id="btn-load-fixed" style="margin-bottom: 10px">Load fixed issues</button>
+<button class="btn btn-default" id="btn-load-unfixed" style="margin-bottom: 10px">Load unfixed issues</button>
 <div id="map" style="width: 100%; height: 500px"></div>
 
 <div class="modal fade" id="issue-modal" tabindex="-1" role="dialog" aria-labelledby="issue-modal">

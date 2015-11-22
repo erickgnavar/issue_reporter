@@ -5,8 +5,17 @@ defmodule IssueReporter.IssueController do
 
   alias IssueReporter.Issue
 
-  def index(conn, _params) do
-    issues = Repo.all(Issue)
+  def index(conn, params) do
+    issues = Issue
+    # TODO: find a better way to make this query
+    case params["fixed"] do
+      "true" ->
+        issues = issues |> Issue.fixed
+      "false" ->
+        issues = issues |> Issue.unfixed
+      _ -> nil
+    end
+    issues = issues |> Repo.all 
     render(conn, "index.json", issues: issues)
   end
 
