@@ -24,4 +24,14 @@ defmodule IssueReporter.Issue do
     model
     |> cast(params, @required_fields, @optional_fields)
   end
+
+  def unfixed(query) do
+    from i in query,
+    where: i.fixed == false
+  end
+
+  def fixed(query) do
+    from i in query,
+    where: i.fixed == true
+  end
 end
