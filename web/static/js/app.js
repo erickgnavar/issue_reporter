@@ -71,12 +71,30 @@ const ICONS = {
   'broken lamp post': '/images/lamp.png'
 }
 
+window.fixIssue = function (id) {
+  $.ajax({
+    method: 'put',
+    url: `/api/issues/${id}/`,
+    data: {
+      issue: {
+        fixed: true
+      }
+    },
+    success: function () {} 
+  }) 
+}
+
 function addMarker(issue) {
   map.addMarker({
     lat: issue.latitude,
     lng: issue.longitude,
     infoWindow: {
-      content: `<p>${issue.message}</p>`
+      content: `
+        <p>${issue.message} ${issue.fixed ? '(fixed)' : ''}</p>
+        <button class="btn btn-primary" onClick="fixIssue(${issue.id})">
+          Fix
+        </button>
+      `
     },
     icon: ICONS[issue.type]
   })
