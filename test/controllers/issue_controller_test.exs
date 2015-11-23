@@ -22,7 +22,9 @@ defmodule IssueReporter.IssueControllerTest do
       "type" => issue.type,
       "latitude" => issue.latitude,
       "longitude" => issue.longitude,
-      "fixed" => issue.fixed}
+      "fixed" => issue.fixed,
+      "message" => issue.message
+    }
   end
 
   test "does not show resource and instead throw error when id is nonexistent", %{conn: conn} do
