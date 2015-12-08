@@ -19,26 +19,45 @@ import "deps/phoenix_html/web/static/js/phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 import socket from "./socket"
+// import L from 'leaflet'
+// TODO: find a way to load with npm and remove scripts from html template
 
 let channel = socket.channel('issues:home', {})
 channel.join()
   .receive('ok', resp => { console.log('Joined successfully', resp) })
   .receive('error', resp => { console.log('Unable to join', resp) })
 
+let opts = {
+  contextmenu: true,
+  contextmenuWidth: 140,
+  contextmenuItems: [
+    {
+      text: 'Make report',
+      callback: e => {
+        form.find('textarea[name="message"]').val('')
+        form.find('input[name="latitude"]').val(e.latlng.lat)
+        form.find('input[name="longitude"]').val(e.latlng.lng)
+        modal.modal('show')
+      }
+    }
+  ]
+}
+
+let map = L.map('map', opts).setView([-12.043333, -77.028333], 12)
+let markers = []
+
+map.on('locationfound', e => {
+  let radius = e.accuracy / 2
+  L.circle(e.latlng, radius).addTo(map)
+})
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
+
 $('#btn-enable-geolocation').on('click', function(event) {
   event.preventDefault()
-  GMaps.geolocate({
-    success: function(position) {
-      map.setCenter(position.coords.latitude, position.coords.longitude);
-      map.addMarker({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      })
-    },
-    error: function(error) {},
-    not_supported: function() {},
-    always: function() {}
-  })
+  map.locate({setView: true, zoom: 16})
 })
 
 $('#btn-load-all-issues').on('click', function(event) {
@@ -56,30 +75,8 @@ $('#btn-load-unfixed').on('click', function(event) {
   loadIssues({fixed: false})
 })
 
-let map = new GMaps({
-  div: '#map',
-  lat: -12.043333,
-  lng: -77.028333,
-  zoom: 12
-})
-
 let form = $('#issue-form')
 let modal = $('#issue-modal')
-
-map.setContextMenu({
-  control: 'map',
-  options: [
-    {
-      title: 'Add marker',
-      action: function (e) {
-        form.find('textarea[name="message"]').val('')
-        form.find('input[name="latitude"]').val(e.latLng.lat())
-        form.find('input[name="longitude"]').val(e.latLng.lng())
-        modal.modal('show')
-      }
-    }
-  ]
-})
 
 const ICONS = {
   'broken semaphore': '/images/semaphore.png',
@@ -95,28 +92,40 @@ window.fixIssue = function (id) {
         fixed: true
       }
     },
-    success: function () {} 
-  }) 
+    success: function () {}
+  })
 }
 
 function addMarker(issue) {
-  map.addMarker({
-    lat: issue.latitude,
-    lng: issue.longitude,
-    infoWindow: {
-      content: `
+  var marker = L.marker([issue.latitude, issue.longitude], {
+    icon: L.icon({
+      iconUrl: ICONS[issue.type]
+    })
+  })
+  marker.addTo(map)
+  markers.push(marker)
+  marker.on('click', e => {
+    L.popup()
+      .setLatLng(e.latlng)
+      .setContent(`
         <p>${issue.message} ${issue.fixed ? '(fixed)' : ''}</p>
         <button class="btn btn-primary" onClick="fixIssue(${issue.id})">
           Fix
         </button>
-      `
-    },
-    icon: ICONS[issue.type]
+      `)
+      .openOn(map)
   })
 }
 
+function removeMarkers() {
+  markers.forEach(marker => {
+    map.removeLayer(marker)
+  })
+  markers = []
+}
+
 function loadIssues(params) {
-  map.removeMarkers()
+  removeMarkers()
   params = params || {}
   $.ajax({
     method: 'get',

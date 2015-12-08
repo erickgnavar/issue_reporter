@@ -15,7 +15,7 @@ defmodule IssueReporter.IssueController do
         issues = issues |> Issue.unfixed
       _ -> nil
     end
-    issues = issues |> Repo.all 
+    issues = issues |> Repo.all
     render(conn, "index.json", issues: issues)
   end
 
