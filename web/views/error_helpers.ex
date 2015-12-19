@@ -25,10 +25,10 @@ defmodule IssueReporter.ErrorHelpers do
     #
     #     dngettext "errors", "1 file", "%{count} files", count
     #
-    Gettext.dngettext(MyApp.Gettext, "errors", msg, msg, opts[:count], opts)
+    Gettext.dngettext(IssueReporter.Gettext, "errors", msg, msg, opts[:count], opts)
   end
 
   def translate_error(msg) do
-    Gettext.dgettext(MyApp.Gettext, "errors", msg)
+    Gettext.dgettext(IssueReporter.Gettext, "errors", msg)
   end
 end
