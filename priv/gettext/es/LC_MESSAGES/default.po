@@ -1,0 +1,51 @@
+## `msgid`s in this file come from POT (.pot) files. Do not add, change, or
+## remove `msgid`s manually here as they're tied to the ones in the
+## corresponding POT file (with the same domain). Use `mix gettext.extract
+## --merge` or `mix gettext.merge` to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: es\n"
+
+#: web/views/page_view.ex:3
+msgid "Set current location"
+msgstr "Establecer posición actual"
+
+#: web/views/page_view.ex:6
+msgid "Load all issues"
+msgstr "Cargar todos las incidencias"
+
+#: web/views/page_view.ex:9
+msgid "Load fixed issues"
+msgstr "Cargar las incidencias solucionadas"
+
+#: web/views/page_view.ex:12
+msgid "Load unfixed issues"
+msgstr "Cargar las incidencias pendientes"
+
+#: web/views/page_view.ex:45
+msgid "Close"
+msgstr "Cerrar"
+
+#: web/views/page_view.ex:39
+msgid "Message"
+msgstr "Mensaje"
+
+#: web/views/page_view.ex:46
+msgid "Send issue"
+msgstr "Enviar incidencia"
+
+#: web/views/page_view.ex:31
+msgid "Type"
+msgstr "Tipo"
+
+#: web/controllers/page_controller.ex:8
+msgid "Broken lamp post"
+msgstr "Poste malogrado"
+
+#: web/controllers/page_controller.ex:7
+msgid "Broken semaphore"
+msgstr "Semáforo malogrado"
+
+#: web/views/page_view.ex:24
+msgid "New issue"
+msgstr "Nueva incidencia"

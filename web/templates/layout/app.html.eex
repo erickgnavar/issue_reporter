@@ -18,6 +18,14 @@
     <div class="container" role="main">
       <div class="header">
         <h1>Yo reporto</h1>
+        <div class="btn-group pull-right">
+          <a class="btn btn-default" href="<%= locale_path(@conn, :set_lang, "es") %>">
+            es
+          </a>
+          <a class="btn btn-default" href="<%= locale_path(@conn, :set_lang, "en") %>">
+            en
+          </a>
+        </div>
       </div>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

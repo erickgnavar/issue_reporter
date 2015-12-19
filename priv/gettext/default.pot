@@ -1,0 +1,43 @@
+#: web/views/page_view.ex:3
+msgid "Set current location"
+msgstr ""
+
+#: web/views/page_view.ex:6
+msgid "Load all issues"
+msgstr ""
+
+#: web/views/page_view.ex:9
+msgid "Load fixed issues"
+msgstr ""
+
+#: web/views/page_view.ex:12
+msgid "Load unfixed issues"
+msgstr ""
+
+#: web/views/page_view.ex:45
+msgid "Close"
+msgstr ""
+
+#: web/views/page_view.ex:39
+msgid "Message"
+msgstr ""
+
+#: web/views/page_view.ex:46
+msgid "Send issue"
+msgstr ""
+
+#: web/views/page_view.ex:31
+msgid "Type"
+msgstr ""
+
+#: web/controllers/page_controller.ex:8
+msgid "Broken lamp post"
+msgstr ""
+
+#: web/controllers/page_controller.ex:7
+msgid "Broken semaphore"
+msgstr ""
+
+#: web/views/page_view.ex:24
+msgid "New issue"
+msgstr ""

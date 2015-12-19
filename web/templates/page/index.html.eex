@@ -1,7 +1,17 @@
-<button class="btn btn-default" id="btn-enable-geolocation" style="margin-bottom: 10px">Set current location</button>
-<button class="btn btn-default" id="btn-load-all-issues" style="margin-bottom: 10px">Load all</button>
-<button class="btn btn-default" id="btn-load-fixed" style="margin-bottom: 10px">Load fixed issues</button>
-<button class="btn btn-default" id="btn-load-unfixed" style="margin-bottom: 10px">Load unfixed issues</button>
+<div style="margin-bottom: 10px">
+  <button class="btn btn-default" id="btn-enable-geolocation">
+    <%= gettext "Set current location" %>
+  </button>
+  <button class="btn btn-default" id="btn-load-all-issues">
+    <%= gettext "Load all issues" %>
+  </button>
+  <button class="btn btn-default" id="btn-load-fixed">
+    <%= gettext "Load fixed issues" %>
+  </button>
+  <button class="btn btn-default" id="btn-load-unfixed">
+    <%= gettext "Load unfixed issues" %>
+  </button>
+</div>
 <div id="map" style="width: 100%; height: 500px"></div>
 
 <div class="modal fade" id="issue-modal" tabindex="-1" role="dialog" aria-labelledby="issue-modal">
@@ -11,14 +21,14 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="exampleModalLabel">New issue</h4>
+        <h4 class="modal-title" id="exampleModalLabel"><%= gettext "New issue" %></h4>
       </div>
       <div class="modal-body">
         <form id="issue-form">
           <input type="hidden" name="latitude"/>
           <input type="hidden" name="longitude"/>
           <div class="form-group">
-            <label for="type" class="control-label">Type:</label>
+            <label for="type" class="control-label"><%= gettext "Type" %>:</label>
             <select id="type" name="type" class="form-control">
             <%= for type <- @issue_types do %>
               <option value="<%= type.key %>"><%= type.value %></option>
@@ -26,14 +36,14 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="message" class="control-label">Message:</label>
+            <label for="message" class="control-label"><%= gettext "Message" %>:</label>
             <textarea class="form-control" id="message" name="message"></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="btn-add-issue">Send issue</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= gettext "Close" %></button>
+        <button type="button" class="btn btn-primary" id="btn-add-issue"><%= gettext "Send issue" %></button>
       </div>
     </div>
   </div>
