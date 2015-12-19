@@ -49,6 +49,8 @@ defmodule IssueReporter.Web do
       use Phoenix.HTML
 
       import IssueReporter.Router.Helpers
+      import IssueReporter.ErrorHelpers
+      import IssueReporter.Gettext
     end
   end
 

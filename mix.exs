@@ -6,7 +6,7 @@ defmodule IssueReporter.Mixfile do
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
-     compilers: [:phoenix] ++ Mix.compilers,
+     compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      aliases: aliases,
@@ -18,7 +18,7 @@ defmodule IssueReporter.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {IssueReporter, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger,
+     applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex]]
   end
 
@@ -36,7 +36,8 @@ defmodule IssueReporter.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.3"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:gettext, "~> 0.9"}
     ]
   end
 
