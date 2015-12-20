@@ -40,7 +40,8 @@ let opts = {
         modal.modal('show')
       }
     }
-  ]
+  ],
+  fullscreenControl: true
 }
 
 let map = L.map('map', opts).setView([-12.043333, -77.028333], 12)
