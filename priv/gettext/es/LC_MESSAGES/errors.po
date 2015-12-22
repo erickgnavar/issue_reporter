@@ -7,19 +7,19 @@ msgstr ""
 "Language: es\n"
 
 msgid "can't be blank"
-msgstr ""
+msgstr "no puede estar en blanco"
 
 msgid "is invalid"
-msgstr ""
+msgstr "es invalido "
 
 msgid "has invalid format"
-msgstr ""
+msgstr "tiene un formato invalido"
 
 msgid "has an invalid entry"
 msgstr ""
 
 msgid "is reserved"
-msgstr ""
+msgstr "esta reservado"
 
 msgid "does not match confirmation"
 msgstr ""

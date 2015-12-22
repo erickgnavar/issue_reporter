@@ -11,6 +11,9 @@
   <button class="btn btn-default" id="btn-load-unfixed">
     <%= gettext "Load unfixed issues" %>
   </button>
+  <p>
+    <%= gettext("Right click or tap and hold in the desired position for report an issue") %>
+  </p>
 </div>
 <div id="map" style="width: 100%; height: 500px"></div>
 
