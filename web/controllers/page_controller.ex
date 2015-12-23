@@ -1,6 +1,5 @@
 defmodule IssueReporter.PageController do
   use IssueReporter.Web, :controller
-  import IssueReporter.Gettext
 
   def index(conn, _params) do
     issue_types = [

@@ -33,6 +33,7 @@ defmodule IssueReporter.Web do
       alias IssueReporter.Repo
       import Ecto
       import Ecto.Query, only: [from: 1, from: 2]
+      import IssueReporter.Gettext
 
       import IssueReporter.Router.Helpers
     end
@@ -67,6 +68,7 @@ defmodule IssueReporter.Web do
       alias IssueReporter.Repo
       import Ecto
       import Ecto.Query, only: [from: 1, from: 2]
+      import IssueReporter.Gettext
     end
   end
 
