@@ -1,0 +1,16 @@
+build:
+  image: marcelocg/phoenix
+  commands:
+    - apt-get update
+    - apt-get install postgresql-client
+    - mix test
+compose:
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=issue_reporter_test
+branches:
+  - master
+  - develop
