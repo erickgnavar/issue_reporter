@@ -9,7 +9,8 @@ defmodule IssueReporter.LocaleController do
   defp get_url(conn) do
     case get_req_header(conn, "referer") do
       [referer] when is_binary(referer) ->
-        referer |> String.replace("#{conn.scheme}://#{conn.req_headers["host"]}", "")
+        [host] = get_req_header(conn, "host")
+        referer |> String.replace("#{conn.scheme}://#{host}", "")
       _ ->
         "/"
     end
